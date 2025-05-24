@@ -293,6 +293,95 @@ article.active {
   z-index: -1;
 }
 
+.portfolio-list.has-scrollbar {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  list-style: none;
+}
+.portfolio-title {
+  margin-bottom: 32px; /* Adjust as needed */
+}
+
+.portfolio-item {
+  min-width: 220px;
+  background: var(--eerie-black-2, #181824);
+  border-radius: 16px;
+  box-shadow: var(--shadow-1, 0 4px 16px rgba(0,0,0,0.08));
+  padding: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.portfolio-img-box img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  margin-bottom: 12px;
+}
+
+.portfolio-item-title {
+  font-size: 1.1em;
+  margin: 0 0 6px 0;
+}
+
+.portfolio-item-category {
+  font-size: 0.95em;
+  color: #aaa;
+}
+
+/* Show 4 items at a time on desktop */
+@media (min-width: 900px) {
+  .portfolio-list.has-scrollbar {
+    gap: 24px;
+  }
+  .portfolio-item {
+    min-width: 22%;
+    max-width: 22%;
+  }
+}
+
+/* Carousel base styles */
+.portfolio-list.has-scrollbar {
+  display: flex;
+  overflow-x: auto;
+  gap: 24px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+  list-style: none;
+}
+
+.portfolio-item {
+  min-width: 220px;
+  background: var(--eerie-black-2, #181824);
+  border-radius: 16px;
+  box-shadow: var(--shadow-1, 0 4px 16px rgba(0,0,0,0.08));
+  padding: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.portfolio-img-box img {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+  max-width: 180px;
+  margin-bottom: 12px;
+}
+
+.portfolio-item-title {
+  font-size: 1.1em;
+  margin: 0 0 6px 0;
+}
+
+.portfolio-item-category {
+  font-size: 0.95em;
+  color: #aaa;
+}
+
 
 
 
@@ -727,7 +816,10 @@ main {
  * #clients 
  */
 
-.clients { margin-bottom: 15px; }
+.clients {
+  margin-top: 38px;    /* Space above certifications */
+  margin-bottom: 20px;
+  }
 
 .clients-list {
   display: flex;
@@ -756,6 +848,10 @@ main {
 }
 
 .clients-item img:hover { filter: grayscale(0); }
+
+.clients-title {
+  margin-bottom: 32px; /* Adjust as needed */
+}
 
 
 
@@ -881,7 +977,8 @@ main {
 
 .filter-select-box {
   position: relative;
-  margin-bottom: 25px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .filter-select {
@@ -1879,22 +1976,71 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 * RESUME
 	 */
 
-  .timeline-text { max-width: 700px; }
+  .timeline-text { max-width: 700px;}
 
 }
-.service-content-box {
-  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
-  cursor: pointer;
+
+/* === Timeline Custom Styles === */
+.timeline-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
-.service-content-box:hover,
-.service-content-box-link:hover .service-content-box {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+.timeline-item-title {
+  font-size: 16.6px;
+  font-weight: 600;
+  margin: 0;
 }
-.service-content-box-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+
+.company-name {
+  font-size: 17px;
+  color: var(--vegas-gold);
+  font-weight: 800;
+  margin-left: 6px;
+}
+
+.timeline-date {
+  font-size: 18px;
+  color: #6c757d;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.timeline-text {
+  font-size: 15.6px;
+  list-style:disc;   /* ensures bullet points show */
+  padding-left: 15px;        /* adds space for bullets */
+  margin: 0;                 /* optional: removes extra margin */
+  color: var(--light-gray);  /* or your preferred text color */
+}
+
+/* For nested responsibilities (if you use them) */
+.responsibilities {
+  list-style: disc inside;
+  padding-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 15px;
+  color: var(--light-gray);
+}
+
+.responsibilities > li {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.responsibilities ul {
+  list-style: circle inside;
+  padding-left: 18px;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.responsibilities ul li {
+  font-weight: 400;
+  margin-bottom: 4px;
 }
 }
