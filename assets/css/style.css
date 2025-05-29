@@ -326,6 +326,7 @@ article.active {
 .portfolio-item-title {
   font-size: 1.1em;
   margin: 0 0 6px 0;
+  color: gold;
 }
 
 .portfolio-item-category {
