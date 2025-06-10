@@ -168,7 +168,7 @@ if (carousel) {
 document.addEventListener("DOMContentLoaded", function() {
   const visitorCount = document.getElementById('visitor-count');
   if (visitorCount) {
-    fetch('https://z5wafaik58.execute-api.eu-central-1.amazonaws.com/prod/count')
+    fetch('https://ll1yz67dl1.execute-api.eu-central-1.amazonaws.com/count')
       .then(response => response.json())
       .then(data => {
         visitorCount.innerText = data.visits;
