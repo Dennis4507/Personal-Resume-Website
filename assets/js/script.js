@@ -164,18 +164,22 @@ if (carousel) {
   autoScrollCarousel();
 }
 
-// Visitor Counter Fetch
-document.addEventListener("DOMContentLoaded", function() {
-  const visitorCount = document.getElementById('visitor-count');
-  if (visitorCount) {
-    fetch('https://ll1yz67dl1.execute-api.eu-central-1.amazonaws.com/count')
-      .then(response => response.json())
-      .then(data => {
-        visitorCount.innerText = data.visits;
-      })
-      .catch(error => {
-        console.error('Visitor count failed:', error);
-      });
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const apiUrl = 'https://m10l1bl7wd.execute-api.eu-central-1.amazonaws.com/count';
+
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      document.getElementById('visitor-count').innerText = data.visits;
+    })
+    .catch(error => {
+      console.error('Visitor counter error:', error);
+      document.getElementById('visitor-count').innerText = 'Error loading visitor count';
+    });
 });
 
