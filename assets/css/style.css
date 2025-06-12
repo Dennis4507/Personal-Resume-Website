@@ -412,7 +412,7 @@ main {
   transition: var(--transition-2);
 }
 
-.sidebar.active { max-height: 405px; }
+.sidebar.active { max-height: 450px; }
 
 .sidebar-info {
   position: relative;
@@ -568,7 +568,7 @@ main {
 
 .navbar-link {
   color: var(--light-gray);
-  font-size: var(--fs-8);
+  font-size: var(--fs-11);
   padding: 20px 7px;
   transition: color var(--transition-1);
 }
@@ -1894,7 +1894,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar, article { width: auto; }
 
-  article { min-height: 100%; }
+  article { min-height: 102%; }
 
 
 
@@ -1925,7 +1925,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .sidebar {
     position: sticky;
-    top: 60px;
+    top: 62px;
     max-height: max-content;
     height: 100%;
     margin-bottom: 0;
@@ -2056,5 +2056,18 @@ textarea.form-input::-webkit-resizer { display: none; }
   margin-top: 24px;
   font-weight: bold;
   color: var(--orange-yellow-crayola); /* Golden yellow */
+}
+/* Make visitor counter smaller and add spacing on mobile */
+@media (max-width: 600px) {
+  .visitor-counter {
+    font-size: 15px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 0 6px;
+    word-break: break-word;
+  }
+  #visitor-count {
+    font-size: 1.2em;
+  }
 }
 }
