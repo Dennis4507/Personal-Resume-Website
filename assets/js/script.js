@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       try {
-        await fetch("https://cny6fxx67k.execute-api.eu-central-1.amazonaws.com/prod/contact", {
+        await fetch("https://70pvm2hzr3.execute-api.eu-central-1.amazonaws.com/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
