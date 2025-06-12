@@ -220,6 +220,30 @@ document.addEventListener("DOMContentLoaded", function () {
 - [VS Code Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) for local development
 
 ---
+---
+
+
+
+## Recent Adjustments & Changelog
+
+### Sidebar & Visitor Counter Improvements
+
+- **Visitor Counter Placement:**  
+  Moved the visitor counter `<p class="visitor-counter">...</p>` above the social links in the sidebar for better visibility and to avoid list formatting issues.
+- **Sidebar Height on Mobile:**  
+  Increased `.sidebar.active { max-height: 450px; }` to ensure all sidebar content (including the visitor counter and social links) is visible when expanded on mobile devices.
+- **Sidebar Expansion on Desktop:**  
+  Ensured that on desktop, the sidebar uses `max-height: max-content;` or `max-height: none;` so it always stretches to fit all content, preventing it from cutting off after the phone details.
+- **Responsive Design Tweaks:**  
+  Added a media query to reduce the font size and padding of the visitor counter on mobile, ensuring it fits and remains readable without overflowing.
+- **Sidebar Structure Cleanup:**  
+  Confirmed the visitor counter is not inside any `<ul>`, but is a direct child of `.sidebar-info_more` for proper formatting and consistent appearance.
+- **Collapsible Sidebar Behavior:**  
+  Verified that the sidebar’s collapsible behavior works as intended:
+  - On mobile, content (including the visitor counter) is only visible when the sidebar is expanded.
+  - On desktop, all sidebar content is always visible.
+
+---
 
 ## License
 
@@ -236,4 +260,4 @@ See [LICENSE](LICENSE) for details.
 
 ---
 
-**Professional, modern, and fully integrated—this resume website is ready for your next career move!**
+**Professional, modern, and fully integrated—this resume website is ready for your next career move!** 
