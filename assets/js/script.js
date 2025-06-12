@@ -116,6 +116,36 @@ if (form && formInputs.length && formBtn) {
   }
 }
 
+// Contact form submission to AWS Lambda/API Gateway
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const payload = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message")
+      };
+
+      try {
+        await fetch("https://2hlqo0xuv9.execute-api.eu-central-1.amazonaws.com/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        alert("Message sent!");
+        contactForm.reset();
+      } catch (error) {
+        alert("There was an error sending your message.");
+        console.error("Contact form error:", error);
+      }
+    });
+  }
+});
+
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
