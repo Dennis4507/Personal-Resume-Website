@@ -30,7 +30,7 @@ A modern, responsive personal resume website built with HTML, CSS, and JavaScrip
 
 This project is a personal resume website designed to showcase professional experience, skills, and portfolio projects. It is fully responsive, features a collapsible sidebar for mobile, and integrates with AWS for dynamic visitor counting and contact form submissions.
 
----
+Image of Website Should be placed here
 
 ## Features
 
