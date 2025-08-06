@@ -123,21 +123,36 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
+      // Check if reCAPTCHA was solved
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Please complete the reCAPTCHA verification.");
+        return;
+      }
+
       const formData = new FormData(e.target);
       const payload = {
         name: formData.get("name"),
         email: formData.get("email"),
-        message: formData.get("message")
+        message: formData.get("message"),
+        recaptchaToken: recaptchaResponse
       };
 
       try {
-        await fetch("https://70pvm2hzr3.execute-api.eu-central-1.amazonaws.com/contact", {
+        const response = await fetch("https://70pvm2hzr3.execute-api.eu-central-1.amazonaws.com/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
-        alert("Message sent!");
-        contactForm.reset();
+
+        if (response.ok) {
+          alert("Message sent!");
+          contactForm.reset();
+          grecaptcha.reset();
+        } else {
+          const errorData = await response.json();
+          alert(errorData.message || "There was an error sending your message.");
+        }
       } catch (error) {
         alert("There was an error sending your message.");
         console.error("Contact form error:", error);
