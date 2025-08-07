@@ -103,17 +103,32 @@ const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
 if (form && formInputs.length && formBtn) {
+  // Function to check if form is valid
+  function checkFormValidity() {
+    const gdprCheckbox = document.getElementById("gdpr-checkbox");
+    const basicFormValid = form.checkValidity();
+    const gdprChecked = gdprCheckbox ? gdprCheckbox.checked : true;
+    
+    if (basicFormValid && gdprChecked) {
+      formBtn.removeAttribute("disabled");
+    } else {
+      formBtn.setAttribute("disabled", "");
+    }
+  }
+  
   // add event to all form input field
   for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-      // check form validation
-      if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-      } else {
-        formBtn.setAttribute("disabled", "");
-      }
-    });
+    formInputs[i].addEventListener("input", checkFormValidity);
   }
+  
+  // add event to GDPR checkbox
+  const gdprCheckbox = document.getElementById("gdpr-checkbox");
+  if (gdprCheckbox) {
+    gdprCheckbox.addEventListener("change", checkFormValidity);
+  }
+  
+  // Initial check
+  checkFormValidity();
 }
 
 // Contact form submission to AWS Lambda/API Gateway
@@ -125,17 +140,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Check if GDPR consent checkbox is checked
       const gdprCheckbox = document.getElementById("gdpr-checkbox");
-      if (gdprCheckbox && !gdprCheckbox.checked) {
+      if (!gdprCheckbox) {
+        console.error("GDPR checkbox not found");
+        alert("Form error: GDPR checkbox not found. Please refresh the page.");
+        return;
+      }
+      
+      if (!gdprCheckbox.checked) {
         alert("Bitte stimmen Sie der Datenschutzerklärung zu, um das Formular zu senden.");
+        gdprCheckbox.focus();
         return;
       }
 
       // Check if reCAPTCHA was solved
-      const recaptchaResponse = grecaptcha.getResponse();
+      let recaptchaResponse = '';
+      try {
+        recaptchaResponse = grecaptcha.getResponse();
+      } catch (error) {
+        console.error("reCAPTCHA error:", error);
+        alert("reCAPTCHA error. Please refresh the page and try again.");
+        return;
+      }
+      
       if (!recaptchaResponse) {
         alert("Please complete the reCAPTCHA verification.");
         return;
       }
+
+      console.log("Form validation passed, submitting...");
 
       const formData = new FormData(e.target);
       const payload = {
