@@ -2070,4 +2070,123 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: 1.2em;
   }
 }
+
+/*-----------------------------------*\
+  #PRIVACY PAGE STYLES
+\*-----------------------------------*/
+
+/* Privacy page specific styles to match Resume layout for text content */
+.privacy-section {
+  background: var(--eerie-black-2);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-2);
+  margin-bottom: 30px;
+  max-width: 1000px; /* Limit width for better readability */
+  margin: 0 auto; /* Center the section */
+}
+
+.privacy-section p {
+  color: var(--light-gray-70);
+  font-size: 13.5px;
+  font-weight: var(--fw-300);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  padding-left: 8px;
+  padding-right: 5px;
+}
+
+.privacy-section h3 {
+  color: var(--white-2);
+  font-size: 18px;
+  font-weight: var(--fw-500);
+  margin-bottom: 20px;
+  margin-top: 32px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  padding-left: 8px;
+}
+
+.privacy-section h4 {
+  color: var(--white-2);
+  font-size: 16px;
+  font-weight: var(--fw-400);
+  margin-bottom: 16px;
+  margin-top: 24px;
+  padding-left: 8px; /* Adds padding for better readability */
+}
+
+.privacy-section ul {
+  color: var(--light-gray-70);
+  font-size: 14px;
+  font-weight: var(--fw-300);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  padding-left: 20px;
+}
+
+.privacy-section ul li {
+  margin-bottom: 12px;
+}
+
+.privacy-section a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: none;
+}
+
+.privacy-section a:hover {
+  color: var(--vegas-gold);
+}
+
+.privacy-section strong {
+  color: var(--white-2);
+  font-weight: var(--fw-500);
+}
+
+/*-----------------------------------*\
+  #CONTACT FORM GDPR STYLES
+\*-----------------------------------*/
+
+.gdpr-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 20px 0 16px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  max-width: 100%;
+  width: 100%;
+}
+
+.gdpr-consent input[type="checkbox"] {
+  margin: 0;
+  flex-shrink: 0;
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.gdpr-consent label {
+  color: var(--light-gray);
+  font-weight: var(--fw-300);
+  cursor: pointer;
+  margin: 0;
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: calc(100% - 24px);
+}
+
+.gdpr-consent a {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+}
+
+.gdpr-consent a:hover {
+  color: var(--vegas-gold);
+}
 }

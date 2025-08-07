@@ -123,6 +123,13 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", async function (e) {
       e.preventDefault();
 
+      // Check if GDPR consent checkbox is checked
+      const gdprCheckbox = document.getElementById("gdpr-checkbox");
+      if (gdprCheckbox && !gdprCheckbox.checked) {
+        alert("Bitte stimmen Sie der Datenschutzerklärung zu, um das Formular zu senden.");
+        return;
+      }
+
       // Check if reCAPTCHA was solved
       const recaptchaResponse = grecaptcha.getResponse();
       if (!recaptchaResponse) {
